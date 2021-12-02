@@ -1,6 +1,5 @@
 package com.company;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -16,6 +15,7 @@ public class Main {
                 break;
             }
         }
+        numCompare(compGenNum, userNum);
     }
     public static String input() {
         Scanner input = new Scanner(System.in);
@@ -39,9 +39,16 @@ public class Main {
         return rand.nextInt(10);
     }
     public static void numCompare(String compGenNum, String userNum) {
-        int[] repeatingNums = {0, 0, 0, 0};
         for (int i = 0; i < 4; i++) {
-
+            if (compGenNum.charAt(i) == userNum.charAt(i)) {
+                System.out.println("Digit " + (i + 1) + " is in the right place");
+            }
+            else if (compGenNum.contains(String.valueOf(userNum.charAt(i)))) {
+                System.out.println("Digit " + (i + 1) + " is not in the right position but is in the computer's number");
+            }
+            else {
+                System.out.println("Digit " + (i + 1) + " is not in the right place");
+            }
         }
     }
 }
